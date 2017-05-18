@@ -1,6 +1,7 @@
 Django==1.11.1
 django-allauth==0.32.0
 django-appconf==1.0.2
+django-bootstrap3==8.2.3
 django-compressor==2.1.1
 django-crispy-forms==1.6.1
 django-debug-toolbar==1.8
