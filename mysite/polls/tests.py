@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Question
+from .models import Question, Choice
 
 
 def create_question(question_text, days):
@@ -17,6 +17,29 @@ def create_question(question_text, days):
     """
     time = timezone.now() + datetime.timedelta(days=days)
     return Question.objects.create(question_text=question_text, pub_date=time)
+
+
+def create_choice(question, choice_text):
+    """
+    Creates a choice from choice_text
+    """
+    return Choice.objects.create(question=question, choice_text=choice_text)
+
+
+class VoteViewTests(TestCase):
+    def test_vote_method_counts_votes(self):
+        """
+        Tests that the vote method correctly counts votes.
+        """
+        question = create_question("Test Question 1", 1)
+        choice = create_choice(question, 'Test Choice 1')
+        total = choice.votes
+        Choice.vote(choice.id)
+        choice = Choice.objects.get(id=1)
+        self.assertTrue(
+            (choice.votes > total and abs(total - choice.votes) == 1),
+            "vote method failed to count vote correctly"
+        )
 
 
 class QuestionMethodTests(TestCase):
