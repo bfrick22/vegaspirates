@@ -63,7 +63,6 @@ class VoteViewTests(TestCase):
         self.assertContains(response, "Test Choice 2 -- 0 votes")
 
 
-
 class QuestionMethodTests(TestCase):
     def test_was_published_recently_with_old_question(self):
         """
