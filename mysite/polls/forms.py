@@ -12,3 +12,4 @@ class PollForm(forms.Form):
         qs = Choice.objects.filter(question__id=question_id)
         choices = [(i.id, i.choice_text) for i in qs]
         self.fields['choices'].choices = choices
+        self.fields['choices'].label = ""

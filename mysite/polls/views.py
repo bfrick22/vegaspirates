@@ -18,17 +18,6 @@ class IndexView(generic.ListView):
         ).order_by('-pub_date')[:10]
 
 
-class DetailView(generic.DetailView):
-    model = Question
-    template_name = 'polls/detail.html'
-
-    def get_queryset(self):
-        """
-        Excludes any questions that aren't published yet.
-        """
-        return Question.objects.filter(pub_date__lte=timezone.now())
-
-
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
@@ -47,7 +36,8 @@ class VoteView(generic.edit.FormView):
 
     def get_context_data(self, **kwargs):
         context = super(VoteView, self).get_context_data(**kwargs)
-        context['question_id'] = self.kwargs.get("question_id")
+        question_id = self.kwargs.get("question_id")
+        context['question'] = Question.objects.get(id=question_id)
         return context
 
     def form_valid(self, form):
