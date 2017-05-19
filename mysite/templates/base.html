@@ -2,35 +2,14 @@
 {% load static %}
 {% block title %}Las Vegas Raiders!{% endblock %}
 {% block bootstrap3_extra_head %}
-<style>
-    body {
-      padding-top: 50px;
-    }
-    #main {
-       position: relative;
-    }
-    #main:after {
-        content : "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-image: url("{% static 'images/background.jpg' %}");
-        background-size: 100% 100%;
-        width: 100%;
-        height: 100%;
-        opacity : 0.1;
-        z-index: -1;
-    }
-</style>
+<link href="{% static 'style.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block bootstrap3_content %}
 
-<div id="main">
-<!-- main -->
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -39,7 +18,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Vegas Pirates</a>
+          <a class="navbar-brand" href="{% url 'home' %}">Vegas Pirates</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -55,8 +34,13 @@
     {% block main_container %}{% endblock %}
     </div>
 
-<!-- main -->
-</div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted"><a href="http://www.raiders.com">Go Raiders!</a></p>
+      </div>
+    </footer>
+
+
 
 {% endblock %}
 

@@ -9,7 +9,7 @@
 
         <div class="list-group">
           {% for question in questions %}
-            <a href="{% url 'polls:detail' question.id %}" class="list-group-item">{{ question.question_text }}</a>
+            <a href="{% url 'polls:vote' question.id %}" class="list-group-item">{{ question.question_text }}</a>
           {% endfor %}
         </div>
 
