@@ -41,6 +41,28 @@ class VoteViewTests(TestCase):
             "vote method failed to count vote correctly"
         )
 
+    def test_vote_view_form(self):
+        """
+        Tests that the vote form works and counts votes
+        """
+        question = create_question("Test Question 1", 1)
+        choice1 = create_choice(question, 'Test Choice 1')
+        choice2 = create_choice(question, 'Test Choice 2')
+        response = self.client.get(reverse('polls:results', args=(question.id,)))
+        self.assertContains(response, "Test Choice 1 -- 0 votes")
+        self.assertContains(response, "Test Choice 2 -- 0 votes")
+        response = self.client.get(reverse('polls:vote', args=(question.id,)))
+        self.assertContains(response, "Test Choice 1")
+        self.assertContains(response, "Test Choice 2")
+        self.assertContains(response, "Test Question 1")
+        response = self.client.post(reverse('polls:vote', args=(question.id,)),
+                                    data={'choices': ['1']},
+                                    follow=True
+                                    )
+        self.assertContains(response, "Test Choice 1 -- 1 vote")
+        self.assertContains(response, "Test Choice 2 -- 0 votes")
+
+
 
 class QuestionMethodTests(TestCase):
     def test_was_published_recently_with_old_question(self):
