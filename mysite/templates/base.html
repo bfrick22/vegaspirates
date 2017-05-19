@@ -1,0 +1,57 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+{% load static %}
+{% block title %}Las Vegas Raiders!{% endblock %}
+{% block bootstrap3_extra_head %}
+<link href="{% static 'style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block bootstrap3_content %}
+
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+            <img src="{% static 'images/raiders.svg' %}" alt="Raiders" width="50px" height="50px" class="raiders-image">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'home' %}">Vegas Pirates</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li class="{{ polls }}"><a href="{% url 'polls:index' %}">Polls</a></li>
+
+              {% if request.user.is_staff %}
+                <li class="{{ admin }}"><a href="{% url 'admin:index' %}">Admin</a></li>
+              {% endif %}
+
+              {% if request.user.is_authenticated %}
+                 <li class="{{ signout }}"><a href="#">Sign Out</a></li>
+              {% else %}
+                 <li class="{{ signin }}"><a href="#">Sign In</a></li>
+              {% endif%}
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container">
+    {% block main_container %}{% endblock %}
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted"><a href="http://www.raiders.com">Go Raiders!</a></p>
+      </div>
+    </footer>
+
+
+
+{% endblock %}
+

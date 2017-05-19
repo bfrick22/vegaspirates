@@ -1,13 +1,23 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+{% block main_container %}
+    <div class="page-header">
+      <h1>Polls</h1>
+    </div>
+    {% if questions %}
 
-{% if questions %}
-    <ul>
-    {% for question in questions %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+        <div class="list-group">
+          {% for question in questions %}
+            <a href="{% url 'polls:vote' question.id %}" class="list-group-item">{{ question.question_text }}</a>
+          {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="alert alert-success" role="alert">
+            No Polls Available
+        </div>
+    {% endif %}
+
+
+{% endblock %}

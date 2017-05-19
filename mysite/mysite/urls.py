@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from . import views
+
+from .views import HomePageView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^polls/', include('polls.urls', namespace="polls")),
+    url(r'^$', HomePageView.as_view(), name="home"),
 ]
