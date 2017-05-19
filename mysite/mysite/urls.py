@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
 
 from .views import HomePageView
 
@@ -23,3 +24,9 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^$', HomePageView.as_view(), name="home"),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
