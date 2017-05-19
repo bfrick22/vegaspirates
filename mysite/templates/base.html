@@ -22,8 +22,12 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'admin:index' %}">Admin</a></li>
-            <li class=""><a href="{% url 'polls:index' %}">Polls</a></li>
+              <li class="{{ polls }}"><a href="{% url 'polls:index' %}">Polls</a></li>
+
+              {% if request.user.is_admin %}
+                <li class="{{ admin }}"><a href="{% url 'admin:index' %}">Admin</a></li>
+              {% endif %}
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>

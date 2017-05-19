@@ -192,3 +192,7 @@ BOOTSTRAP3 = {
         'inline': 'bootstrap3.renderers.InlineFieldRenderer',
     },
 }
+
+
+# nav vars.  django app url namespaces or url names
+NAV_URL_NAMES = ['home', 'polls', 'admin', 'signin', 'signout', 'profile']
