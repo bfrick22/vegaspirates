@@ -55,3 +55,8 @@ code {
     opacity : 0.1;
     z-index: -1;
 }
+
+.raiders-image {
+    float: left;
+    padding-right: 5px;
+}
