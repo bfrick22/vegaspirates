@@ -15,3 +15,12 @@ def navigation(request):
     elif url_name in context_processor.keys():
         context_processor[url_name] = 'active'
     return context_processor
+
+
+def userprofile(request):
+    context_processor = {}
+    print request.user
+    print request.user.__dict__
+
+    return context_processor
+

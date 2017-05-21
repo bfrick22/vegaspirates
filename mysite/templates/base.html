@@ -36,6 +36,10 @@
                  <li class="{{ account_login }}"><a href="{% url 'account_login' %}">Sign In</a></li>
               {% endif%}
 
+              {% if request.user.is_authenticated %}
+                <li class="">{{ userprofile.username }}</li>
+              {% endif%}
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
