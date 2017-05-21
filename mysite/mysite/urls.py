@@ -21,6 +21,7 @@ from .views import HomePageView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^$', HomePageView.as_view(), name="home"),
 ]

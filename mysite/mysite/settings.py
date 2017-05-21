@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+SITE_ID = 1
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     # local apps
     'polls.apps.PollsConfig',
 
-    # thirdparty apps
+    # bootstrap
     'bootstrap3',
 
     # django apps
@@ -44,6 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     # 'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    # thirdparty apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
+    # 'allauth.socialaccount.providers.facebook',
 
     # debug
     'debug_toolbar',
@@ -76,6 +85,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.tz',
                 'mysite.context_processors.navigation',
+
             ],
         },
     },
@@ -112,6 +122,19 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# allauth
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+ACCOUNT_UNIQUE_EMAIL = False
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+LOGIN_REDIRECT_URL = "/"
 
 
 # Internationalization
@@ -200,7 +223,8 @@ BOOTSTRAP3 = {
 
 
 # nav vars.  django app url namespaces or url names
-NAV_URL_NAMES = ['home', 'polls', 'admin', 'signin', 'signout', 'profile']
+NAV_URL_NAMESPACES = ['polls',]
+NAV_URL_NAMES = ['home', 'account_logout', 'account_login', 'admin', ]
 
 
 INTERNAL_IPS = ['127.0.0.1']
