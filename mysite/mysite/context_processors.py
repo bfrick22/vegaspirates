@@ -31,5 +31,4 @@ def userprofile(request):
                 'twitter': None
             }
         }
-    print context_processor
     return context_processor
