@@ -24,6 +24,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+
+              {% if request.user.is_authenticated %}
+                <li class="{{ profile }}"><a href="{% url 'profile' %}">{{ userprofile.username }}</a></li>
+              {% endif%}
+
               <li class="{{ polls }}"><a href="{% url 'polls:index' %}">Polls</a></li>
 
               {% if request.user.is_staff %}
@@ -34,10 +39,6 @@
                  <li class="{{ account_logout }}"><a href="{% url 'account_logout' %}">Sign Out</a></li>
               {% else %}
                  <li class="{{ account_login }}"><a href="{% url 'account_login' %}">Sign In</a></li>
-              {% endif%}
-
-              {% if request.user.is_authenticated %}
-                <li class="">{{ userprofile.username }}</li>
               {% endif%}
 
           </ul>

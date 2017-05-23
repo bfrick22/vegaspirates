@@ -19,8 +19,17 @@ def navigation(request):
 
 def userprofile(request):
     context_processor = {}
-    print request.user
-    print request.user.__dict__
-
+    if request.user.is_authenticated:
+        context_processor = {
+            'userprofile': {
+                'username': request.user.username,
+                'email': request.user.email,
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+                'google': None,
+                'facebook': None,
+                'twitter': None
+            }
+        }
+    print context_processor
     return context_processor
-

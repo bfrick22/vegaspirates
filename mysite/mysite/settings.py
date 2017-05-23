@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # main app
+    'mysite',
+
     # local apps
     'polls.apps.PollsConfig',
 
@@ -154,14 +157,15 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'EXCHANGE_TOKEN': True,
         'LOCALE_FUNC': lambda request: 'en_US',
-        'VERIFIED_EMAIL': False,
+        'VERIFIED_EMAIL': True,
         'VERSION': 'v2.4',
     },
     'google': {
         'SCOPE': [
             'profile',
-            # 'email',
+            'email',
         ],
+        "VERIFIED_EMAIL": True,
         'AUTH_PARAMS': {
             'access_type': 'online',
         }
@@ -170,10 +174,11 @@ SOCIALACCOUNT_PROVIDERS = {
 ACCOUNT_UNIQUE_EMAIL = False
 ACCOUNT_EMAIL_REQUIRED = False
 SOCIALACCOUNT_EMAIL_VERIFICATION = False
-SOCIALACCOUNT_QUERY_EMAIL = False
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_AUTO_SIGNUP = False
+ACCOUNT_EMAIL_CONFIRMATION_HMAC = False
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATION_METHOD = "username"
-ACCOUNT_EMAIL_CONFIRMATION_HMAC = False
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_USERNAME_BLACKLIST = ['bruce']
 
@@ -265,7 +270,7 @@ BOOTSTRAP3 = {
 
 # nav vars.  django app url namespaces or url names
 NAV_URL_NAMESPACES = ['polls',]
-NAV_URL_NAMES = ['home', 'account_logout', 'account_login', 'admin', ]
+NAV_URL_NAMES = ['home', 'account_logout', 'account_login', 'admin', 'profile' ]
 
 
 INTERNAL_IPS = ['127.0.0.1']
