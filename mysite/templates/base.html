@@ -26,7 +26,11 @@
           <ul class="nav navbar-nav">
 
               {% if request.user.is_authenticated %}
-                <li class="{{ profile }}"><a href="{% url 'profile' %}">{{ userprofile.username }}</a></li>
+                <li class="{{ profile }}">
+                    <a href="{% url 'profile' %}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ userprofile.username }}
+                    </a>
+                </li>
               {% endif%}
 
               <li class="{{ polls }}"><a href="{% url 'polls:index' %}">Polls</a></li>

@@ -10,6 +10,7 @@ class UserProfile(object):
     first_name = None
     last_name = None
     date_joined = None
+    last_login = None
     google = None
     facebook = None
     twitter = None
@@ -27,6 +28,7 @@ class UserProfile(object):
             self.first_name = self.user.first_name
             self.last_name = self.user.last_name
             self.date_joined = self.user.date_joined
+            self.last_login = self.user.last_login
 
             # social auth attrs
             sa = self.user.socialaccount_set.all()
@@ -41,7 +43,7 @@ class UserProfile(object):
             # profile_pic
             self.profile_pic = self.gravatar_url()
 
-    def gravatar_url(self, size=75):
+    def gravatar_url(self, size=100):
         default = "http://i1.kym-cdn.com/photos/images/original/000/344/222/7a0.jpg"
         return "https://www.gravatar.com/avatar/%s?%s" % (
             hashlib.md5(self.email.lower()).hexdigest(), urllib.urlencode({'d': default, 's': str(size)}))

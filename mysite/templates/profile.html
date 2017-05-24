@@ -13,93 +13,125 @@
             <div class="box-body">
                  <div class="col-sm-6">
                  <div  align="center">
-                     <img alt="User Pic" src="{{ userprofile.profile_pic }}"
-                          id="profile-image1" class="img-rounded img-responsive">
+                     <img alt="User Pic" src="{{ userprofile.profile_pic }}" id="profile-image1" class="img-rounded img-responsive">
                  </div>
-
               <br>
 
               <!-- /input-group -->
             </div>
+
             <div class="col-sm-6">
-            <h4 style="color:#00b1b1;">{{ userprofile.username }}</h4></span>
-              <span><p>{{ userprofile.email }}</p></span>
+                <h4 style="color:#00b1b1;">{{ userprofile.username }}</h4>
+                <span><p>{{ userprofile.email }}</p></span>
             </div>
+
+            <div class="col-sm-6">
+                <a class="btn btn-info" href="{% url 'account_change_password' %}" role="button">Change Password</a>
+                <a class="btn btn-info" href="{% url 'socialaccount_connections' %}" role="button">Account Connections</a>
+            </div>
+
             <div class="clearfix"></div>
             <hr style="margin:5px 0 5px 0;">
-
 
             <div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7 col-xs-6 ">{{ userprofile.first_name }}</div>
             <div class="clearfix"></div>
             <div class="bot-border"></div>
 
-            <div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7"> {{ userprofile.last_name }}</div>
+            <div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7 col-xs-6 "> {{ userprofile.last_name }}</div>
             <div class="clearfix"></div>
             <div class="bot-border"></div>
 
-            <div class="col-sm-5 col-xs-6 tital " >Date Of Joining:</div><div class="col-sm-7">{{ userprofile.date_joined }}</div>
+            <div class="col-sm-5 col-xs-6 tital " >Date Of Joining:</div><div class="col-sm-7 col-xs-6 ">{{ userprofile.date_joined }}</div>
+            <div class="clearfix"></div>
+            <div class="bot-border"></div>
+
+            <div class="col-sm-5 col-xs-6 tital " >Last Login:</div><div class="col-sm-7 col-xs-6 ">{{ userprofile.last_login|timesince }} Ago</div>
             <div class="clearfix"></div>
             <div class="bot-border"></div>
 
 
-            {% if userprofile.google %}
-
-                {% for key, val in userprofile.google.extra_data.items %}
-                    <div class="col-sm-5 col-xs-6 tital " >{{ key }}</div><div class="col-sm-7">{{ val }}</div>
-                    <div class="clearfix"></div>
-                    <div class="bot-border"></div>
-                {% endfor %}
-
-            {% endif %}
-
-            {% if userprofile.twitter %}
-
-                {% for key, val in userprofile.twitter.extra_data.items %}
+            <div class="col-md-12" >&nbsp;</div>
+            <div class="clearfix"></div>
+            <div class="bot-border"></div>
 
 
-                    {% if key == 'status' %}
+            <div class="col-md-12">
+                {% if userprofile.google %}
+                    <div class="alert alert-info" role="alert">
+                        Google Account Information
+                    </div>
 
-                        {% for k, v in userprofile.twitter.extra_data.status.items %}
-
-                            {% if k == 'entities' %}
-
-                                {% for kk, vv in userprofile.twitter.extra_data.entities.items %}
-                                    <div class="col-sm-5 col-xs-6 tital " >{{ kk }}</div><div class="col-sm-7">{{ vv }}</div>
-                                    <div class="clearfix"></div>
-                                    <div class="bot-border"></div>
-                                {% endfor %}
-
-                            {% elif k == 'retweeted_status' %}
-
-                                {% for kk, vv in userprofile.twitter.extra_data.retweeted_status.items %}
-                                    <div class="col-sm-5 col-xs-6 tital " >{{ kk }}</div><div class="col-sm-7">{{ vv }}</div>
-                                    <div class="clearfix"></div>
-                                    <div class="bot-border"></div>
-                                {% endfor %}
-
-                            {% endif %}
-
-                        {% endfor %}
-
-                    {% else %}
-
-                        <div class="col-sm-5 col-xs-6 tital " >{{ key }}</div><div class="col-sm-7">{{ val }}</div>
+                    {% for key, val in userprofile.google.extra_data.items %}
+                        <div class="col-sm-5 col-xs-6 tital " >{{ key }}:</div><div class="col-sm-7 col-xs-6 ">{{ val|urlize|wordwrap:15 }}</div>
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
+                    {% endfor %}
 
-                    {% endif %}
+                {% endif %}
 
-                {% endfor %}
+                {% if userprofile.twitter %}
+                    <div class="alert alert-info" role="alert">
+                        Twitter Account Information
+                    </div>
 
-            {% endif %}
+                    {% for key, val in userprofile.twitter.extra_data.items %}
 
-            {% if userprofile.facebook %}
-                {% for key, val in userprofile.facebook.extra_data.items %}
-                    <div class="col-sm-5 col-xs-6 tital " >{{ key }}</div><div class="col-sm-7">{{ val }}</div>
-                    <div class="clearfix"></div>
-                    <div class="bot-border"></div>
-                {% endfor %}
-            {% endif %}
+
+                        {% if key == 'status' %}
+
+                            {% for k, v in userprofile.twitter.extra_data.status.items %}
+
+                                {% if k == 'entities' %}
+
+                                    {% for kk, vv in userprofile.twitter.extra_data.entities.items %}
+                                        <div class="col-sm-5 col-xs-6 tital " >{{ kk }}:</div><div class="col-sm-7 col-xs-6 ">{{ vv|urlize }}</div>
+                                        <div class="clearfix"></div>
+                                        <div class="bot-border"></div>
+                                    {% endfor %}
+
+                                {% elif k == 'retweeted_status' %}
+
+                                    {% for kk, vv in userprofile.twitter.extra_data.retweeted_status.items %}
+                                        <div class="col-sm-5 col-xs-6 tital " >{{ kk }}:</div><div class="col-sm-7 col-xs-6 ">{{ vv|urlize }}</div>
+                                        <div class="clearfix"></div>
+                                        <div class="bot-border"></div>
+                                    {% endfor %}
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            <div class="col-sm-5 col-xs-6 tital " >{{ key }}:</div><div class="col-sm-7 col-xs-6 ">{{ val|urlize }}</div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% endif %}
+
+
+                {% if userprofile.facebook %}
+
+                    <div class="alert alert-info" role="alert">
+                        Facebook Account Information
+                    </div>
+
+                    {% for key, val in userprofile.facebook.extra_data.items %}
+                        <div class="col-sm-5 col-xs-6 tital " >{{ key }}:</div><div class="col-sm-7 col-xs-6 ">{{ val|urlize }}</div>
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+                    {% endfor %}
+                {% endif %}
+
+
+
+            </div>
+            <div class="clearfix"></div>
+
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
