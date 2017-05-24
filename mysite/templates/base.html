@@ -53,9 +53,16 @@
 
     <div class="container">
     {% block body %}
+
+        <div class="page-header">
+          <h1>{{ page_header|default:"The Page!"}} <small>{{ page_header_small|default:"Vegas Pirates!"}}</small></h1>
+        </div>
+
             {% block main_container %}{% endblock main_container %}
             {% block content %}{% endblock content %}
             {% block extra_body %}{% endblock extra_body %}
+
+
     {% endblock body %}
     </div>
 

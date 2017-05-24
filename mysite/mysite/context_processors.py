@@ -60,13 +60,18 @@ def navigation(request):
     if namespaces:
         for namespace in namespaces:
             context_processor[namespace] = 'active'
+            context_processor['page_header_small'] = namespace.title()
     elif url_name in context_processor.keys():
         context_processor[url_name] = 'active'
+
+    # page header
+    header_name = url_name.replace("_", " ")
+    context_processor['page_header'] = header_name.title()
+
     return context_processor
 
 
 def userprofile(request):
-    context_processor = {}
     up = UserProfile(request.user)
     context_processor = up.__dict__
     return {'userprofile': context_processor}
