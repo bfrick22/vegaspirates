@@ -17,11 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 
-from .views import HomePageView, UserProfileView
+from .views import HomePageView, UserProfileView, UserProfileUpdateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/profile/$', UserProfileView.as_view(), name='profile'),
+    url(r'^accounts/profile/update$', UserProfileUpdateView.as_view(), name='profile_update'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^$', HomePageView.as_view(), name="home"),
