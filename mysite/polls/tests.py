@@ -82,6 +82,14 @@ class QuestionMethodTests(TestCase):
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
 
+    def test_choice_text(self):
+        """
+        Test choice_text will return expected string
+        """
+        question = create_question("Test Question 1", 1)
+        choice1 = create_choice(question, 'Test Choice 1')
+        self.assertTrue(str(choice1) == 'Test Choice 1')
+
 
 class QuestionViewTests(TestCase):
     def test_index_view_with_no_questions(self):

@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+SITE_ID = 1
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -31,10 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # main app
+    'mysite',
+
     # local apps
     'polls.apps.PollsConfig',
 
-    # thirdparty apps
+    # bootstrap
     'bootstrap3',
 
     # django apps
@@ -44,20 +48,36 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     # 'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.humanize',
 
-    # debug toolbar
+    # thirdparty apps
+    'django_nose',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.facebook',
+
+    # debug
     'debug_toolbar',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -75,6 +95,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.tz',
                 'mysite.context_processors.navigation',
+                'mysite.context_processors.userprofile',
+
             ],
         },
     },
@@ -94,6 +116,17 @@ DATABASES = {
 }
 
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'lowcash',
+    }
+}
+
+if 'test' in sys.argv:
+    CACHE_MIDDLEWARE_SECONDS = 0
+
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -111,6 +144,61 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# allauth
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'js_sdk', # oauth2 js_sdk
+        'SCOPE': ['public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'en_US',
+        'VERIFIED_EMAIL': True,
+        'VERSION': 'v2.4',
+    },
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        "VERIFIED_EMAIL": True,
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+ACCOUNT_UNIQUE_EMAIL = False
+ACCOUNT_EMAIL_REQUIRED = False
+SOCIALACCOUNT_EMAIL_VERIFICATION = False
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_AUTO_SIGNUP = False
+ACCOUNT_EMAIL_CONFIRMATION_HMAC = False
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_USERNAME_BLACKLIST = ['bruce']
 
 
 # Internationalization
@@ -199,7 +287,8 @@ BOOTSTRAP3 = {
 
 
 # nav vars.  django app url namespaces or url names
-NAV_URL_NAMES = ['home', 'polls', 'admin', 'signin', 'signout', 'profile']
+NAV_URL_NAMESPACES = ['polls',]
+NAV_URL_NAMES = ['home', 'account_logout', 'account_login', 'admin', 'profile',]
 
 
 INTERNAL_IPS = ['127.0.0.1']
@@ -216,4 +305,15 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# Tell nose to measure coverage
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=mysite,polls',
+    '--cover-html',
 ]
