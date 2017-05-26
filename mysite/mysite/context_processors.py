@@ -54,8 +54,12 @@ def navigation(request):
 
     # active url - css class
     match = request.resolver_match
-    url_name = match.url_name
     namespaces = match.namespaces if len(match.namespaces) else None
+
+    try:
+        url_name = match.url_name.split("_")[0]
+    except IndexError:
+        url_name = match.url_name
 
     if namespaces:
         for namespace in namespaces:

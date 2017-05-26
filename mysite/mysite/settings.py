@@ -287,7 +287,7 @@ BOOTSTRAP3 = {
 
 # nav vars.  django app url namespaces or url names
 NAV_URL_NAMESPACES = ['polls',]
-NAV_URL_NAMES = ['home', 'account_logout', 'account_login', 'admin', 'profile' ]
+NAV_URL_NAMES = ['home', 'account_logout', 'account_login', 'admin', 'profile',]
 
 
 INTERNAL_IPS = ['127.0.0.1']
