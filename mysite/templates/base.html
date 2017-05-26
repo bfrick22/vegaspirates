@@ -1,5 +1,6 @@
 {% extends 'bootstrap3/bootstrap3.html' %}
 {% load static %}
+
 {% block title %}Las Vegas Raiders!{% endblock %}
 {% block bootstrap3_extra_head %}
 <link href="{% static 'style.css' %}" rel="stylesheet">
@@ -23,6 +24,15 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+
+              {% if request.user.is_authenticated %}
+                <li class="{{ profile }}">
+                    <a href="{% url 'profile' %}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ userprofile.username }}
+                    </a>
+                </li>
+              {% endif%}
+
               <li class="{{ polls }}"><a href="{% url 'polls:index' %}">Polls</a></li>
 
               {% if request.user.is_staff %}
@@ -30,9 +40,9 @@
               {% endif %}
 
               {% if request.user.is_authenticated %}
-                 <li class="{{ signout }}"><a href="#">Sign Out</a></li>
+                 <li class="{{ account_logout }}"><a href="{% url 'account_logout' %}">Sign Out</a></li>
               {% else %}
-                 <li class="{{ signin }}"><a href="#">Sign In</a></li>
+                 <li class="{{ account_login }}"><a href="{% url 'account_login' %}">Sign In</a></li>
               {% endif%}
 
           </ul>
@@ -42,7 +52,18 @@
 
 
     <div class="container">
-    {% block main_container %}{% endblock %}
+    {% block body %}
+
+        <div class="page-header">
+          <h1>{{ page_header|default:"The Page!"}} <small>{{ page_header_small|default:"Vegas Pirates!"}}</small></h1>
+        </div>
+
+            {% block main_container %}{% endblock main_container %}
+            {% block content %}{% endblock content %}
+            {% block extra_body %}{% endblock extra_body %}
+
+
+    {% endblock body %}
     </div>
 
     <footer class="footer">
