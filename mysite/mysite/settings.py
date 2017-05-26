@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     # thirdparty apps
+    'django_nose',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -304,4 +305,15 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# Tell nose to measure coverage
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=mysite,polls',
+    '--cover-html',
 ]
