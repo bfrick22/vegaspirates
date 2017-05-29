@@ -1,21 +1,8 @@
 #!/usr/bin/env bash
 
-
-../manage.py createsuperuser << EOF
-admin
-
-mypassword
-mypassword
-EOF
-
-../manage.py migrate;
-
-../manage.py reset polls;
-../manage.py runscript polls_testdata;
-
-../manage.py reset socialaccount;
-../manage.py runscript socialaccount_testdata;
-
-../manage.py test
-
+python manage.py migrate;
+echo "from django.contrib.auth.models import User; User.objects.filter(username='admin').delete(); User.objects.create_superuser('admin', '', 'test')" | python manage.py shell
+python manage.py runscript polls_testdata;
+python manage.py runscript socialaccount_testdata;
+python manage.py test;
 exit;
