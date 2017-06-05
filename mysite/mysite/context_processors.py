@@ -1,6 +1,7 @@
-from django.conf import settings
 import hashlib
 import urllib
+from django.conf import settings
+from TwitterAPI import TwitterAPI
 
 
 class UserProfile(object):
@@ -79,3 +80,19 @@ def userprofile(request):
     up = UserProfile(request.user)
     context_processor = up.__dict__
     return {'userprofile': context_processor}
+
+
+def twitterfeed(request):
+    context_processor = {}
+    api = TwitterAPI(settings.TWITTER_API_CONSUMER_KEY,
+                     settings.TWITTER_API_CONSUMER_SECRET,
+                     settings.TWITTER_API_ACCESS_TOKEN_KEY,
+                     settings.TWITTER_API_ACCESS_TOKEN_SECRET)
+    r = api.request('search/tweets', {'q': 'Oakland Raiders'})
+    context_processor['twitter_feed'] = r
+    if settings.DEBUG:
+        import json
+        for i in r.get_iterator():
+            print json.dumps(i, indent=2)
+            break
+    return context_processor

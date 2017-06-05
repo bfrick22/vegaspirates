@@ -1,12 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+{% load humanize %}
+{% load template_tools %}
+{% load bootstrap3 %}
 
 {% block main_container %}
 
-<!-- 16:9 aspect ratio -->
-<div class="embed-responsive embed-responsive-16by9">
 
 
+    <ul class="timeline">
 
-</div>
+        {% for item in twitter_feed %}
+        <!-- <li class="timeline-inverted">-->
+        <li>
+          <div class="timeline-badge">
+              <i class="glyphicon glyphicon-check"></i>
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">{{ item.user.name }} <small>{{ item.user.screen_name }}</small></h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ item.created_at|naturaltime }} via Twitter</small></p>
+            </div>
+              <hr />
+            <div class="timeline-body">
+                <p>
+                    {{ item.text|safe }}
+                </p>
+                <p>
+
+                </p>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+
+    </ul>
+
 
 {% endblock %}
