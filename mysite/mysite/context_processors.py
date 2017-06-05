@@ -90,9 +90,9 @@ def twitterfeed(request):
                      settings.TWITTER_API_ACCESS_TOKEN_SECRET)
     r = api.request('search/tweets', {'q': 'Oakland Raiders'})
     context_processor['twitter_feed'] = r
-    # if settings.DEBUG:
-    #     import json
-    #     for i in r.get_iterator():
-    #         print json.dumps(i, indent=2)
-    #         break
+    if settings.DEBUG:
+        import json
+        for i in r.get_iterator():
+            print json.dumps(i, indent=2)
+            break
     return context_processor
