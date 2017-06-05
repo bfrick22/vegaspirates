@@ -84,10 +84,15 @@ def userprofile(request):
 
 def twitterfeed(request):
     context_processor = {}
-    api = TwitterAPI(settings.TWITTER_API_CONSUMER_KEY,
-                     settings.TWITTER_API_CONSUMER_SECRET,
-                     settings.TWITTER_API_ACCESS_TOKEN_KEY,
-                     settings.TWITTER_API_ACCESS_TOKEN_SECRET)
+    try:
+        api = TwitterAPI(settings.TWITTER_API_CONSUMER_KEY,
+                         settings.TWITTER_API_CONSUMER_SECRET,
+                         settings.TWITTER_API_ACCESS_TOKEN_KEY,
+                         settings.TWITTER_API_ACCESS_TOKEN_SECRET)
+    except Exception:
+        # if no keys found, TwitterAPI throws Exception: Missing authentication parameter
+        return {}
+
     r = api.request('search/tweets', {'q': 'Oakland Raiders'})
     context_processor['twitter_feed'] = r
     if settings.DEBUG:
