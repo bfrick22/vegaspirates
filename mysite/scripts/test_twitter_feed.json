@@ -1,0 +1,416 @@
+{
+  "contributors": null,
+  "truncated": false,
+  "text": "RT @RAIDERS: Showing our support for the @warriors.\n\nRead: https://t.co/oKBQ6HGral https://t.co/Wnw3vXQXh8",
+  "is_quote_status": false,
+  "in_reply_to_status_id": null,
+  "id": 871609643155341312,
+  "favorite_count": 0,
+  "entities": {
+    "symbols": [],
+    "user_mentions": [
+      {
+        "id": 16332223,
+        "indices": [
+          3,
+          11
+        ],
+        "id_str": "16332223",
+        "screen_name": "RAIDERS",
+        "name": "OAKLAND RAIDERS"
+      },
+      {
+        "id": 26270913,
+        "indices": [
+          41,
+          50
+        ],
+        "id_str": "26270913",
+        "screen_name": "warriors",
+        "name": "GoldenStateWarriors"
+      }
+    ],
+    "hashtags": [],
+    "urls": [
+      {
+        "url": "https://t.co/oKBQ6HGral",
+        "indices": [
+          59,
+          82
+        ],
+        "expanded_url": "http://rdrs.co/JSGMFj",
+        "display_url": "rdrs.co/JSGMFj"
+      }
+    ],
+    "media": [
+      {
+        "source_user_id": 16332223,
+        "source_status_id_str": "871501869222432769",
+        "expanded_url": "https://twitter.com/RAIDERS/status/871501869222432769/photo/1",
+        "display_url": "pic.twitter.com/Wnw3vXQXh8",
+        "url": "https://t.co/Wnw3vXQXh8",
+        "media_url_https": "https://pbs.twimg.com/media/DBgyVGhXUAEwafb.jpg",
+        "source_user_id_str": "16332223",
+        "source_status_id": 871501869222432769,
+        "id_str": "871501866005385217",
+        "sizes": {
+          "large": {
+            "h": 627,
+            "resize": "fit",
+            "w": 1200
+          },
+          "small": {
+            "h": 355,
+            "resize": "fit",
+            "w": 680
+          },
+          "medium": {
+            "h": 627,
+            "resize": "fit",
+            "w": 1200
+          },
+          "thumb": {
+            "h": 150,
+            "resize": "crop",
+            "w": 150
+          }
+        },
+        "indices": [
+          83,
+          106
+        ],
+        "type": "photo",
+        "id": 871501866005385217,
+        "media_url": "http://pbs.twimg.com/media/DBgyVGhXUAEwafb.jpg"
+      }
+    ]
+  },
+  "retweeted": false,
+  "coordinates": null,
+  "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+  "in_reply_to_screen_name": null,
+  "in_reply_to_user_id": null,
+  "retweet_count": 260,
+  "id_str": "871609643155341312",
+  "favorited": false,
+  "retweeted_status": {
+    "contributors": null,
+    "truncated": false,
+    "text": "Showing our support for the @warriors.\n\nRead: https://t.co/oKBQ6HGral https://t.co/Wnw3vXQXh8",
+    "is_quote_status": false,
+    "in_reply_to_status_id": null,
+    "id": 871501869222432769,
+    "favorite_count": 691,
+    "entities": {
+      "symbols": [],
+      "user_mentions": [
+        {
+          "id": 26270913,
+          "indices": [
+            28,
+            37
+          ],
+          "id_str": "26270913",
+          "screen_name": "warriors",
+          "name": "GoldenStateWarriors"
+        }
+      ],
+      "hashtags": [],
+      "urls": [
+        {
+          "url": "https://t.co/oKBQ6HGral",
+          "indices": [
+            46,
+            69
+          ],
+          "expanded_url": "http://rdrs.co/JSGMFj",
+          "display_url": "rdrs.co/JSGMFj"
+        }
+      ],
+      "media": [
+        {
+          "expanded_url": "https://twitter.com/RAIDERS/status/871501869222432769/photo/1",
+          "display_url": "pic.twitter.com/Wnw3vXQXh8",
+          "url": "https://t.co/Wnw3vXQXh8",
+          "media_url_https": "https://pbs.twimg.com/media/DBgyVGhXUAEwafb.jpg",
+          "id_str": "871501866005385217",
+          "sizes": {
+            "large": {
+              "h": 627,
+              "resize": "fit",
+              "w": 1200
+            },
+            "small": {
+              "h": 355,
+              "resize": "fit",
+              "w": 680
+            },
+            "medium": {
+              "h": 627,
+              "resize": "fit",
+              "w": 1200
+            },
+            "thumb": {
+              "h": 150,
+              "resize": "crop",
+              "w": 150
+            }
+          },
+          "indices": [
+            70,
+            93
+          ],
+          "type": "photo",
+          "id": 871501866005385217,
+          "media_url": "http://pbs.twimg.com/media/DBgyVGhXUAEwafb.jpg"
+        }
+      ]
+    },
+    "retweeted": false,
+    "coordinates": null,
+    "source": "<a href=\"http://www.spredfast.com\" rel=\"nofollow\">Spredfast app</a>",
+    "in_reply_to_screen_name": null,
+    "in_reply_to_user_id": null,
+    "retweet_count": 260,
+    "id_str": "871501869222432769",
+    "favorited": false,
+    "user": {
+      "follow_request_sent": false,
+      "has_extended_profile": false,
+      "profile_use_background_image": true,
+      "default_profile_image": false,
+      "id": 16332223,
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/201025418/2011twitterbg.jpg",
+      "verified": true,
+      "translator_type": "none",
+      "profile_text_color": "333333",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/672132153900183553/zVFIAIDi_normal.jpg",
+      "profile_sidebar_fill_color": "C7C7C7",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/YFNjoQLkl4",
+              "indices": [
+                0,
+                22
+              ],
+              "expanded_url": "http://www.raiders.com",
+              "display_url": "raiders.com"
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "followers_count": 1044797,
+      "profile_sidebar_border_color": "000000",
+      "id_str": "16332223",
+      "profile_background_color": "000000",
+      "listed_count": 6701,
+      "is_translation_enabled": false,
+      "utc_offset": -25200,
+      "statuses_count": 46583,
+      "description": "Official Twitter feed of The Oakland Raiders",
+      "friends_count": 478,
+      "location": "Oakland, CA",
+      "profile_link_color": "000000",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/672132153900183553/zVFIAIDi_normal.jpg",
+      "following": true,
+      "geo_enabled": true,
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/16332223/1482867085",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/201025418/2011twitterbg.jpg",
+      "screen_name": "RAIDERS",
+      "lang": "en",
+      "profile_background_tile": false,
+      "favourites_count": 2472,
+      "name": "OAKLAND RAIDERS",
+      "notifications": false,
+      "url": "http://t.co/YFNjoQLkl4",
+      "created_at": "Wed Sep 17 16:48:43 +0000 2008",
+      "contributors_enabled": false,
+      "time_zone": "Pacific Time (US & Canada)",
+      "protected": false,
+      "default_profile": false,
+      "is_translator": false
+    },
+    "geo": null,
+    "in_reply_to_user_id_str": null,
+    "possibly_sensitive": false,
+    "lang": "en",
+    "created_at": "Sun Jun 04 23:00:12 +0000 2017",
+    "in_reply_to_status_id_str": null,
+    "place": null,
+    "extended_entities": {
+      "media": [
+        {
+          "expanded_url": "https://twitter.com/RAIDERS/status/871501869222432769/photo/1",
+          "display_url": "pic.twitter.com/Wnw3vXQXh8",
+          "url": "https://t.co/Wnw3vXQXh8",
+          "media_url_https": "https://pbs.twimg.com/media/DBgyVGhXUAEwafb.jpg",
+          "id_str": "871501866005385217",
+          "sizes": {
+            "large": {
+              "h": 627,
+              "resize": "fit",
+              "w": 1200
+            },
+            "small": {
+              "h": 355,
+              "resize": "fit",
+              "w": 680
+            },
+            "medium": {
+              "h": 627,
+              "resize": "fit",
+              "w": 1200
+            },
+            "thumb": {
+              "h": 150,
+              "resize": "crop",
+              "w": 150
+            }
+          },
+          "indices": [
+            70,
+            93
+          ],
+          "type": "photo",
+          "id": 871501866005385217,
+          "media_url": "http://pbs.twimg.com/media/DBgyVGhXUAEwafb.jpg"
+        }
+      ]
+    },
+    "metadata": {
+      "iso_language_code": "en",
+      "result_type": "recent"
+    }
+  },
+  "user": {
+    "follow_request_sent": false,
+    "has_extended_profile": true,
+    "profile_use_background_image": true,
+    "default_profile_image": false,
+    "id": 2779225900,
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "verified": false,
+    "translator_type": "none",
+    "profile_text_color": "333333",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/869359713988759552/zIJy15Xd_normal.jpg",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/JdC9a0deCH",
+            "indices": [
+              0,
+              23
+            ],
+            "expanded_url": "https://m.youtube.com/channel/UCIAEcGK0vsaM4kn2rmebS9w",
+            "display_url": "m.youtube.com/channel/UCIAEc\u2026"
+          }
+        ]
+      },
+      "description": {
+        "urls": [
+          {
+            "url": "https://t.co/JdC9a0deCH",
+            "indices": [
+              53,
+              76
+            ],
+            "expanded_url": "https://m.youtube.com/channel/UCIAEcGK0vsaM4kn2rmebS9w",
+            "display_url": "m.youtube.com/channel/UCIAEc\u2026"
+          }
+        ]
+      }
+    },
+    "followers_count": 76,
+    "profile_sidebar_border_color": "C0DEED",
+    "id_str": "2779225900",
+    "profile_background_color": "C0DEED",
+    "listed_count": 3,
+    "is_translation_enabled": false,
+    "utc_offset": null,
+    "statuses_count": 73,
+    "description": "CHEY-TOWN-Football#69-baseball#34// Angel R Muro \ud83d\udc99\ud83d\udcaf\ud83d\ude07 https://t.co/JdC9a0deCH",
+    "friends_count": 67,
+    "location": "North Las Vegas, NV",
+    "profile_link_color": "1DA1F2",
+    "profile_image_url": "http://pbs.twimg.com/profile_images/869359713988759552/zIJy15Xd_normal.jpg",
+    "following": false,
+    "geo_enabled": true,
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/2779225900/1490509488",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "screen_name": "Blue_Vibe_34",
+    "lang": "en",
+    "profile_background_tile": false,
+    "favourites_count": 72,
+    "name": "Angel M",
+    "notifications": false,
+    "url": "https://t.co/JdC9a0deCH",
+    "created_at": "Sun Sep 21 17:08:21 +0000 2014",
+    "contributors_enabled": false,
+    "time_zone": null,
+    "protected": false,
+    "default_profile": true,
+    "is_translator": false
+  },
+  "geo": null,
+  "in_reply_to_user_id_str": null,
+  "possibly_sensitive": false,
+  "lang": "en",
+  "created_at": "Mon Jun 05 06:08:27 +0000 2017",
+  "in_reply_to_status_id_str": null,
+  "place": null,
+  "extended_entities": {
+    "media": [
+      {
+        "source_user_id": 16332223,
+        "source_status_id_str": "871501869222432769",
+        "expanded_url": "https://twitter.com/RAIDERS/status/871501869222432769/photo/1",
+        "display_url": "pic.twitter.com/Wnw3vXQXh8",
+        "url": "https://t.co/Wnw3vXQXh8",
+        "media_url_https": "https://pbs.twimg.com/media/DBgyVGhXUAEwafb.jpg",
+        "source_user_id_str": "16332223",
+        "source_status_id": 871501869222432769,
+        "id_str": "871501866005385217",
+        "sizes": {
+          "large": {
+            "h": 627,
+            "resize": "fit",
+            "w": 1200
+          },
+          "small": {
+            "h": 355,
+            "resize": "fit",
+            "w": 680
+          },
+          "medium": {
+            "h": 627,
+            "resize": "fit",
+            "w": 1200
+          },
+          "thumb": {
+            "h": 150,
+            "resize": "crop",
+            "w": 150
+          }
+        },
+        "indices": [
+          83,
+          106
+        ],
+        "type": "photo",
+        "id": 871501866005385217,
+        "media_url": "http://pbs.twimg.com/media/DBgyVGhXUAEwafb.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "iso_language_code": "en",
+    "result_type": "recent"
+  }
+}
