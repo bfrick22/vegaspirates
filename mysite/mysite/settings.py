@@ -65,11 +65,11 @@ INSTALLED_APPS = [
     'django_extensions',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.gzip.GZipMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,8 +77,20 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-
 ]
+
+if DEBUG:
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.middleware.gzip.GZipMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -96,6 +108,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'mysite.context_processors.navigation',
                 'mysite.context_processors.userprofile',
+                'mysite.context_processors.twitterfeed',
 
             ],
         },
@@ -308,7 +321,6 @@ DEBUG_TOOLBAR_PANELS = [
 ]
 
 
-
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 # Tell nose to measure coverage
@@ -317,3 +329,10 @@ NOSE_ARGS = [
     '--cover-package=mysite,polls',
     '--cover-html',
 ]
+
+
+# Twitter api keys
+TWITTER_API_CONSUMER_KEY = os.environ.get("TWITTER_API_CONSUMER_KEY", None)
+TWITTER_API_CONSUMER_SECRET = os.environ.get("TWITTER_API_CONSUMER_SECRET", None)
+TWITTER_API_ACCESS_TOKEN_KEY = os.environ.get("TWITTER_API_ACCESS_TOKEN_KEY", None)
+TWITTER_API_ACCESS_TOKEN_SECRET = os.environ.get("TWITTER_API_ACCESS_TOKEN_SECRET", None)

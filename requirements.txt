@@ -22,4 +22,5 @@ requests-oauthlib==0.8.0
 rjsmin==1.0.12
 six==1.10.0
 sqlparse==0.2.3
+TwitterAPI==2.4.5
 Werkzeug==0.12.2
