@@ -4,7 +4,13 @@
 {% block title %}Las Vegas Raiders!{% endblock %}
 {% block bootstrap3_extra_head %}
 <link href="{% static 'style.css' %}" rel="stylesheet">
-{% endblock %}
+
+    {% block extra_head %}
+
+    {% endblock extra_head %}
+
+{% endblock bootstrap3_extra_head %}
+
 
 {% block bootstrap3_content %}
 
@@ -58,9 +64,9 @@
           <h1>{{ page_header|default:"The Page!"}} <small>{{ page_header_small|default:"Vegas Pirates!"}}</small></h1>
         </div>
 
-            {% block main_container %}{% endblock main_container %}
-            {% block content %}{% endblock content %}
-            {% block extra_body %}{% endblock extra_body %}
+        {% block main_container %}{% endblock main_container %}
+        {% block content %}{% endblock content %}
+        {% block extra_body %}{% endblock extra_body %}
 
 
     {% endblock body %}

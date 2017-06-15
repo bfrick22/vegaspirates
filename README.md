@@ -7,6 +7,4 @@
     export FACEBOOK_CLIENT_ID='id';
     export FACEBOOK_SECRET='secret';
     export GOOGLE_CLIENT_ID='id';
-    export GOOGLE_SECRET='qoiP28_secret';
-
-å
+    export GOOGLE_SECRET='';

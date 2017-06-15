@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+{% load humanize %}
+{% load template_tools %}
+{% load bootstrap3 %}
 
 {% block main_container %}
-
-<!-- 16:9 aspect ratio -->
-<div class="embed-responsive embed-responsive-16by9">
-
-
-
-</div>
-
+    {% include 'twitter_feed_snippet.html' %}
 {% endblock %}
