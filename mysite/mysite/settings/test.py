@@ -1,7 +1,5 @@
 from __future__ import absolute_import
-from .base import *
-
-DEBUG = True
+import sys
 
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -11,3 +9,13 @@ NOSE_ARGS = [
     '--cover-package=mysite,polls',
     '--cover-html',
 ]
+
+if 'test' in sys.argv:
+    CACHE_MIDDLEWARE_SECONDS = 0
+
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3'
+        }
+    }

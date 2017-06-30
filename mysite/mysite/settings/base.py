@@ -14,7 +14,7 @@ import os
 import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SITE_ID = 1
 
 # Quick-start development settings - unsuitable for production
@@ -78,18 +78,6 @@ MIDDLEWARE = [
     'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
-if DEBUG:
-    MIDDLEWARE = [
-        'django.middleware.security.SecurityMiddleware',
-        'django.middleware.gzip.GZipMiddleware',
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-        'django.contrib.sessions.middleware.SessionMiddleware',
-        'django.middleware.common.CommonMiddleware',
-        'django.middleware.csrf.CsrfViewMiddleware',
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.messages.middleware.MessageMiddleware',
-        'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    ]
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -134,9 +122,6 @@ CACHES = {
         'LOCATION': 'lowcash',
     }
 }
-
-if 'test' in sys.argv:
-    CACHE_MIDDLEWARE_SECONDS = 0
 
 
 # Password validation
