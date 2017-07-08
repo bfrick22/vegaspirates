@@ -3,11 +3,14 @@ from selenium.webdriver.common.by import By
 
 
 class Page(object):
+    page_title = ""
+
     def __init__(self, driver, base_url='http://localhost:8000'):
         self.driver = driver
         self.base_url = base_url
 
-    def repo_steps(self, message):
+    @staticmethod
+    def repo_steps(message):
         print(message)
 
     def get_title(self):
@@ -16,9 +19,15 @@ class Page(object):
     def find_element(self, *loc):
         return self.driver.find_element(*loc)
 
-    def open(self, url="/"):
+    def open(self, url=""):
         url = self.base_url + url
         self.driver.get(url)
+
+    def verify_page_title(self):
+        assert self.get_title() == self.page_title, "Couldn't validate page title.  Found {0} EXPECTED {1}".format(
+            self.get_title(),
+            self.page_title
+        )
 
     def get(self):
         """Perform page tests/operations"""
@@ -26,12 +35,18 @@ class Page(object):
 
 
 class HomePage(Page):
-    page_title = "Las Vegas Raiders!"
+    page_title = "Las Vegas Raiders! | Home"
 
     def get(self):
         self.repo_steps("Open page")
         self.open()
-        assert self.get_title() == self.page_title, "Title has changed.  Found {0} EXPECTED {1}".format(
-            self.get_title(),
-            self.page_title
-        )
+        self.verify_page_title()
+
+
+class Login(Page):
+    page_title = "Las Vegas Raiders! | Account"
+
+    def get(self):
+        self.repo_steps("Logging user in")
+        self.open()
+        self.verify_page_title()

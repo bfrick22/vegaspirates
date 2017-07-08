@@ -5,7 +5,8 @@ import os
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from page import HomePage
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from page import HomePage, Login
 
 
 class BaseFirefoxSeleniumTests(unittest.TestCase):
@@ -25,11 +26,13 @@ class BaseFirefoxSeleniumTests(unittest.TestCase):
         fp = webdriver.FirefoxProfile()
 
         # Add some preferences to the Firefox profile
+        fp.set_preference('browser.cache.offline.enable', False)
         fp.set_preference('browser.cache.memory.enable', False)
         fp.update_preferences()
 
         # config capabilities
         firefox_capabilities = DesiredCapabilities.FIREFOX
+        firefox_capabilities['marionette'] = True
 
         # set selenium webdriver
         self.driver = webdriver.Firefox(fp, capabilities=firefox_capabilities)
@@ -48,7 +51,10 @@ class BaseFirefoxSeleniumTests(unittest.TestCase):
         self.driver.quit()
 
     def test_homepage(self):
-        HomePage(self.driver).get()
+        HomePage(self.driver, 'http://localhost:8000').get()
+
+    def test_login(self):
+        Login(self.driver, 'http://localhost:8000/accounts/login/').get()
 
 
 if __name__ == '__main__':

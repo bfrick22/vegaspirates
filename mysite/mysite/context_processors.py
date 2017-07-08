@@ -73,6 +73,11 @@ def navigation(request):
     header_name = url_name.replace("_", " ")
     context_processor['page_header'] = header_name.title()
 
+    # page title
+    base_title = "Las Vegas Raiders!"
+    title = base_title + ' | ' + header_name.title()
+    context_processor['page_title'] = title
+
     return context_processor
 
 
