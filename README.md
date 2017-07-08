@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bfrick22/vegaspirates.svg?branch=master)](https://travis-ci.org/bfrick22/vegaspirates)
+
 # Vegas Pirates!
 A Django thing and twitter feed thing. 
 
