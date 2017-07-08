@@ -1,7 +1,9 @@
 {% extends 'bootstrap3/bootstrap3.html' %}
 {% load static %}
 
-{% block title %}Las Vegas Raiders!{% endblock %}
+{% block bootstrap3_title %}
+    {{ page_title|default:'Las Vegas Raiders!'}}
+{% endblock %}
 {% block bootstrap3_extra_head %}
 <link href="{% static 'style.css' %}" rel="stylesheet">
 
